@@ -1,8 +1,8 @@
 package handlers
 
 import (
-	"bookings-udemy/pkg/config"
-	"bookings-udemy/pkg/render"
+	"bookings/pkg/config"
+	"bookings/pkg/render"
 	"net/http"
 )
 
@@ -31,5 +31,8 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 
 // About is the handler for the about page
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
+	stringMap := make(map[string]string)
+	stringMap["test"] = "Hello, Again"
+
 	render.RenderTemplate(w, "about.page.gohtml")
 }

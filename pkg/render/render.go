@@ -1,7 +1,7 @@
 package render
 
 import (
-	"bookings-udemy/pkg/config"
+	"bookings/pkg/config"
 	"bytes"
 	"html/template"
 	"log"
