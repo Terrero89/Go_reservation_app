@@ -6,11 +6,11 @@ import (
 	"log"
 )
 
-// AppConfig holds configuration
+// AppConfig holds the application config
 type AppConfig struct {
 	UseCache      bool
 	TemplateCache map[string]*template.Template
 	InfoLog       *log.Logger
-	InProduction  bool                // global var to check if things are or should be in prod or development.
-	Session       *scs.SessionManager // points at the session globally to be changed anywhere is referred to
+	InProduction  bool
+	Session       *scs.SessionManager
 }

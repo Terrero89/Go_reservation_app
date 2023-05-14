@@ -1,9 +1,9 @@
 package main
 
 import (
-	"bookings/pkg/config"
-	"bookings/pkg/handlers"
-	"bookings/pkg/render"
+	"bookings-udemy/pkg/config"
+	"bookings-udemy/pkg/handlers"
+	"bookings-udemy/pkg/render"
 	"fmt"
 	"github.com/alexedwards/scs/v2"
 	"log"
@@ -13,40 +13,37 @@ import (
 
 const portNumber = ":8080"
 
-var app config.AppConfig //added here to meet with the scope of the struct globally.
+var app config.AppConfig
 var session *scs.SessionManager
 
 // main is the main function
 func main() {
-
-	//chage var to true when in production
+	// change this to true when in production
 	app.InProduction = false
-	//session packages to set time limit to user login
+
+	// set up the session
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
-	session.Cookie.Persist = true                  //makes sure to persist during user window acitvity
-	session.Cookie.SameSite = http.SameSiteLaxMode //how strict should mode be to log user out
-	session.Cookie.Secure = app.InProduction       //false for now, but true in production to ensre secutity in https connection
+	session.Cookie.Persist = true
+	session.Cookie.SameSite = http.SameSiteLaxMode
+	session.Cookie.Secure = app.InProduction
 
 	app.Session = session
 
 	tc, err := render.CreateTemplateCache()
 	if err != nil {
-		log.Fatal("Cannot do")
+		log.Fatal("cannot create template cache")
 	}
 
 	app.TemplateCache = tc
 	app.UseCache = false
+
 	repo := handlers.NewRepo(&app)
 	handlers.NewHandlers(repo)
 
 	render.NewTemplates(&app)
 
-	//http.HandleFunc("/", handlers.Repo.Home)
-	//http.HandleFunc("/about", handlers.Repo.About)
-
-	fmt.Println(fmt.Sprintf("Starting application on port %s", portNumber))
-	//_ = http.ListenAndServe(portNumber, nil)
+	fmt.Println(fmt.Sprintf("Staring application on port %s", portNumber))
 
 	srv := &http.Server{
 		Addr:    portNumber,
@@ -54,5 +51,7 @@ func main() {
 	}
 
 	err = srv.ListenAndServe()
-	log.Fatal(err)
+	if err != nil {
+		log.Fatal(err)
+	}
 }
