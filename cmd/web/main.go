@@ -1,10 +1,10 @@
 package main
 
 import (
-	"bookings-udemy/pkg/config"
-	"bookings-udemy/pkg/handlers"
-	"bookings-udemy/pkg/render"
 	"fmt"
+	"github.com/Terrero89/reservations_app/pkg/config"
+	"github.com/Terrero89/reservations_app/pkg/handlers"
+	"github.com/Terrero89/reservations_app/pkg/render"
 	"github.com/alexedwards/scs/v2"
 	"log"
 	"net/http"

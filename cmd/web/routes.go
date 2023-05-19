@@ -1,8 +1,8 @@
 package main
 
 import (
-	"bookings-udemy/pkg/config"
-	"bookings-udemy/pkg/handlers"
+	"github.com/Terrero89/reservations_app/pkg/config"
+	"github.com/Terrero89/reservations_app/pkg/handlers"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/chi/middleware"
 	"net/http"

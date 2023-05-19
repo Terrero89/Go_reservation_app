@@ -1,9 +1,9 @@
 package handlers
 
 import (
-	"bookings-udemy/pkg/config"
-	"bookings-udemy/pkg/models"
-	"bookings-udemy/pkg/render"
+	"github.com/Terrero89/reservations_app/pkg/config"
+	"github.com/Terrero89/reservations_app/pkg/models"
+	"github.com/Terrero89/reservations_app/pkg/render"
 	"net/http"
 )
 

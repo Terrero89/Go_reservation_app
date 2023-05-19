@@ -1,4 +1,4 @@
-module bookings-udemy
+module github.com/Terrero89/reservations_app
 
 go 1.15
 
