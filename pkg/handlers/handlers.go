@@ -48,4 +48,5 @@ func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
 		StringMap: stringMap,
 	})
+
 }
